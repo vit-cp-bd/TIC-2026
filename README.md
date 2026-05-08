@@ -1,2 +1,2 @@
 # TIC-2026
-Proyecto de clasificación de papa chaucha y chola utilizando la arquitectura ViT.
+El Trabajo de Integración Curricular (TIC) se centra en el desarrollo de un modelo de clasificación automática de tubérculos de papa de las variedades chaucha y chola en la fase de poscosecha. Para ello, se emplea las técnicas de ajuste aprendizaje por transferencia (Transfer Learning) y fino parcial (Fine-Tuning) sobre el modelo Vision Transformer (ViT-Base/16), una arquitectura basada en mecanismos de atención que permite procesar imágenes en forma de secuencias de parches. El objetivo es optimizar la identificación y diferenciación de estas variedades, reduciendo la subjetividad y el error humano en los procesos de clasificación.

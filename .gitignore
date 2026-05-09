@@ -1,0 +1,14 @@
+# Archivos temporales de latex
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.blg
+*.bbl
+*.bcf
+*.run.xml
+*.fdb_latexmk
+*.synctex
+*.gz

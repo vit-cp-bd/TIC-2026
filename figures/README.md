@@ -1,0 +1,2 @@
+## Figures 
+Las figuras utilizadas en el manuscrito se encuentran en el repositorio de [Figshare](https://figshare.com/), un repositorio de datos de investigación que permite compartir y publicar conjuntos de datos, figuras y otros materiales relacionados con la investigación. 

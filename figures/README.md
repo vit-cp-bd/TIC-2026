@@ -7,5 +7,5 @@ Las figuras utilizadas en el manuscrito se encuentran en este directorio. Aquí 
 `loss_curves_*.png`: curvas de pérdida durante el entrenamiento, la validación y la prueba.
 `confusion_matrix_*.png`: matrices de confusión para cada técnica de ajuste durante la fase de prueba.
 `test_*.png`: resultados de prueba para la técnica de transferencia de aprendizaje (TL) y el ajuste fino parcial (FTP).
-`comparative_tl_ftp.png`: comparación de las técnicas de ajuste fino (TL y FTP) en términos de precisión, exactitud, pérdida, F1-score y sensibilidad durante la fase de prueba.
+`comparative_test_tl_ftp.png`: comparación de las técnicas de ajuste fino (TL y FTP) en términos de precisión, exactitud, pérdida, F1-score y sensibilidad durante la fase de prueba.
 `eigen-*`: gráficos relacionados con la técnica de Eigen-CAM para cada técnica de ajuste, por variedad de tubérculo y por clase.

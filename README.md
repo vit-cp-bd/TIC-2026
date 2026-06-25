@@ -2,18 +2,18 @@
 
 **Vision Transformer-Based Postharvest Grading of Chaucha and Chola Potato Varieties**
 
-*Universidad Nacional de Loja (UNL) — Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación.*
+_Universidad Nacional de Loja (UNL) — Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación._
 
 ## Descripción
 
-Esta investigación experimental desarrolla un modelo de clasificación automática de tubérculos de papa de las variedades **chaucha** (*Solanum phureja*) y **chola** (*Solanum tuberosum*) en la fase de poscosecha, en las categorías **"buen estado"** y **"defectuoso"**.
+Esta investigación experimental desarrolla un modelo de clasificación automática de tubérculos de papa de las variedades **chaucha** (_Solanum phureja_) y **chola** (_Solanum tuberosum_) en la fase de poscosecha, en las categorías **"buen estado"** y **"defectuoso"**.
 
 El modelo se basa en la arquitectura **Vision Transformer (ViT-Base/16)**, preentrenada en ImageNet-21k y ajustada sobre ImageNet-1K, y fue adaptada mediante dos fases de ajuste siguiendo la metodología **CRISP-ML(Q)**:
 
 1. **Transfer Learning (TL):** congelamiento de las capas iniciales (extractoras de características) y reentrenamiento de la cabeza de clasificación.
 2. **Fine-Tuning parcial (FTP):** congelamiento de las 6 primeras capas del encoder y reentrenamiento de las capas restantes junto con la cabeza de clasificación.
 
-Adicionalmente, se incorporaron técnicas de *data augmentation* (rotaciones, escalado, variaciones de brillo) y *random erasing* para mejorar la generalización, y se evaluó la interpretabilidad del modelo mediante **Eigen-CAM** (`pytorch-grad-cam`).
+Adicionalmente, se incorporaron técnicas de _data augmentation_ (rotaciones, escalado, variaciones de brillo) y _random erasing_ para mejorar la generalización, y se evaluó la interpretabilidad del modelo mediante **Eigen-CAM** (`pytorch-grad-cam`).
 
 El objetivo es reducir la subjetividad y el error humano en la clasificación poscosecha de variedades andinas, donde las arquitecturas CNN presentan limitaciones por su sesgo inductivo local.
 
@@ -21,17 +21,17 @@ El objetivo es reducir la subjetividad y el error humano en la clasificación po
 
 ## Resultados principales
 
-Evaluación sobre el subconjunto de prueba (*n* = 7 200 imágenes):
+Evaluación sobre el subconjunto de prueba (_n_ = 7 200 imágenes):
 
-| Técnica              | Accuracy | MCC    | Loss   |
-|----------------------|----------|--------|--------|
-| Transfer Learning    | 0.9604   | 0.9209 | 0.1346 |
-| Fine-Tuning parcial  | 0.9999   | 0.9997 | 0.0007 |
+| Técnica             | Accuracy | MCC    | Loss   |
+| ------------------- | -------- | ------ | ------ |
+| Transfer Learning   | 0.9604   | 0.9209 | 0.1346 |
+| Fine-Tuning parcial | 0.9999   | 0.9997 | 0.0007 |
 
 **Matrices de confusión (n = 3 600 por clase):**
 
-- *Transfer Learning:* 3 427/3 600 "buen estado" correctas, 3 488/3 600 "defectuoso" correctas (173 FP, 112 FN).
-- *Fine-Tuning parcial:* clasificación correcta en la totalidad de las muestras, con un único falso negativo.
+- _Transfer Learning:_ 3 427/3 600 "buen estado" correctas, 3 488/3 600 "defectuoso" correctas (173 FP, 112 FN).
+- _Fine-Tuning parcial:_ clasificación correcta en la totalidad de las muestras, con un único falso negativo.
 
 El análisis Eigen-CAM confirmó que las regiones de mayor activación coinciden con las áreas de defecto real (pudrición, cortes, brotes), diferenciándolas del fondo.
 
@@ -96,15 +96,15 @@ Notebook principal. Implementa el modelo `ClasificadorPapasViT` sobre ViT-Base/1
 
 **Hiperparámetros utilizados:**
 
-| Parámetro            | Transfer Learning | Fine-Tuning parcial |
-|----------------------|-------------------|----------------------|
-| Learning rate        | 1×10⁻⁵            | 1×10⁻⁶               |
-| Weight decay         | 1×10⁻²            | 1×10⁻⁴               |
-| Batch size           | 32                | 32                   |
-| Épocas               | 30                | 20                   |
-| Optimizador          | AdamW (β = 0.9, 0.999) | AdamW (β = 0.9, 0.999) |
-| Warmup fraction      | 0.5               | 0.5                  |
-| Precisión            | Mixed precision   | Mixed precision      |
+| Parámetro       | Transfer Learning      | Fine-Tuning parcial    |
+| --------------- | ---------------------- | ---------------------- |
+| Learning rate   | 1×10⁻⁵                 | 1×10⁻⁶                 |
+| Weight decay    | 1×10⁻²                 | 1×10⁻⁴                 |
+| Batch size      | 32                     | 32                     |
+| Épocas          | 30                     | 20                     |
+| Optimizador     | AdamW (β = 0.9, 0.999) | AdamW (β = 0.9, 0.999) |
+| Warmup fraction | 0.5                    | 0.5                    |
+| Precisión       | Mixed precision        | Mixed precision        |
 
 **Ejecución:**
 
@@ -119,6 +119,7 @@ O en Google Colab (entorno usado originalmente):
 - Cargar el dataset desde HuggingFace Hub (ver sección `data/`).
 
 **Salidas generadas:**
+
 - Historial de entrenamiento (CSV) con métricas por época.
 - Curvas de pérdida (train/val/test) por fase.
 - Matrices de confusión y métricas (Accuracy, Precision, Recall, F1-Score, MCC) sobre el subconjunto de prueba.
@@ -130,14 +131,14 @@ O en Google Colab (entorno usado originalmente):
 
 Figuras del manuscrito, generadas por los notebooks o disponibles en repositorios externos:
 
-| Figura | Descripción | Fuente |
-|--------|-------------|--------|
-| Fig. 1 | Flujo metodológico CRISP-ML(Q) | [Figshare](https://doi.org/10.6084/m9.figshare.32395359) |
-| Fig. 2 | Muestras representativas del dataset (chaucha/chola × buen estado/defectuoso) | generada localmente |
-| Fig. 3 | Arquitectura ViT adaptada a clasificación binaria | generada localmente |
-| Fig. 4 | Curvas de pérdida (TL y FTP) | generada por `ViT_calidad_papas.ipynb` |
-| Fig. 5 | Matrices de confusión (TL y FTP) | generada por `ViT_calidad_papas.ipynb` |
-| Fig. 6 | Mapas de calor Eigen-CAM | [Figshare](https://doi.org/10.6084/m9.figshare.32643123) |
+| Figura | Descripción                                                                   | Fuente                                                   |
+| ------ | ----------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Fig. 1 | Flujo metodológico CRISP-ML(Q)                                                | [Figshare](https://doi.org/10.6084/m9.figshare.32395359) |
+| Fig. 2 | Muestras representativas del dataset (chaucha/chola × buen estado/defectuoso) | generada localmente                                      |
+| Fig. 3 | Arquitectura ViT adaptada a clasificación binaria                             | generada localmente                                      |
+| Fig. 4 | Curvas de pérdida (TL y FTP)                                                  | generada por `ViT_calidad_papas.ipynb`                   |
+| Fig. 5 | Matrices de confusión (TL y FTP)                                              | generada por `ViT_calidad_papas.ipynb`                   |
+| Fig. 6 | Mapas de calor Eigen-CAM                                                      | [Figshare](https://doi.org/10.6084/m9.figshare.32643123) |
 
 ---
 
@@ -148,19 +149,20 @@ Figuras del manuscrito, generadas por los notebooks o disponibles en repositorio
 - **Tamaño total:** 36 000 imágenes balanceadas (18 000 "buen estado" / 18 000 "defectuoso"), de las cuales 32 292 son muestras locales y 3 708 provienen de repositorios públicos.
 - **Particiones:** 23 040 entrenamiento (64%) / 5 760 validación (16%) / 7 200 prueba (20%).
 - **Repositorio del dataset híbrido (Zenodo):** [10.5281/zenodo.20616991](https://doi.org/10.5281/zenodo.20616991)
-
+- **Repositorio de los datasets utilizados (Hugging Face Hub):** [Dataset de tubérculos de papas](https://huggingface.co/datasets/Carlos012/dataset_papas)
 
 ### Fuentes públicas integradas en el dataset híbrido
 
-- Mafi MMHM et al. *Potato Disease Recognition Dataset*. Mendeley Data, 2023. doi:10.17632/pmbc875pr7.1
-- Mridha MH, Mridha NS. *Healthy Potato Image Dataset*. Mendeley Data, 2023. doi:10.17632/5m38z6jthb.1
-- Islam S, Afrin T. *PotatoCare: Deep learning based potato disease dataset*. Mendeley Data, 2025. doi:10.17632/7vm7xskfg4.2
+- Mafi MMHM et al. _Potato Disease Recognition Dataset_. Mendeley Data, 2023. doi:10.17632/pmbc875pr7.1
+- Mridha MH, Mridha NS. _Healthy Potato Image Dataset_. Mendeley Data, 2023. doi:10.17632/5m38z6jthb.1
+- Islam S, Afrin T. _PotatoCare: Deep learning based potato disease dataset_. Mendeley Data, 2025. doi:10.17632/7vm7xskfg4.2
 
 ### Modelos entrenados
 
-Modelos resultantes de las fases TL y FTP, empaquetados (`.pt`):
+Modelos resultantes de las fases de TL y FTP, empaquetados (`.pt`):
 
 - **DOI (Zenodo):** [10.5281/zenodo.20649945](https://doi.org/10.5281/zenodo.20649945)
+- **Hugging Face Hub:** [Modelos ViT ajustados](https://huggingface.co/Carlos012/vit_papas)
 
 ---
 
@@ -189,7 +191,7 @@ Esto significa que se permite el uso, distribución y reproducción en cualquier
 
 ## Disponibilidad de datos
 
-Parte de los datos públicos utilizados están disponibles en los repositorios Mendeley listados arriba (*Potato Disease Recognition Dataset*, *Healthy Potato Image Dataset*, *PotatoCare*). El resto de los datos generados durante el estudio están disponibles a solicitud razonable al autor de correspondencia.
+Parte de los datos públicos utilizados están disponibles en los repositorios Mendeley listados arriba (_Potato Disease Recognition Dataset_, _Healthy Potato Image Dataset_, _PotatoCare: Deep learning based potato disease dataset_). El resto de los datos generados durante el estudio están disponibles a solicitud razonable al autor de correspondencia.
 
 ---
 
@@ -201,4 +203,6 @@ Los autores declaran haber utilizado herramientas de IA generativa (ChatGPT, Gem
 
 ## Contacto
 
-`<Chamba-Eras, Luis>` — Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación. `<lachamba@unl.edu.ec>`
+Autor: `Armijos-Sarango, Cristian` -- Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación. `cristian.e.armijos@unl.edu.ec`
+
+Coautor: `Chamba-Eras, Luis` -- Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación. `lachamba@unl.edu.ec`.

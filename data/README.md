@@ -108,7 +108,7 @@ Este conjunto de datos puede utilizarse para:
 - Generar métricas de desempeño como accuracy, precision, recall, F1-score y MCC.
 - Analizar interpretabilidad visual mediante técnicas como Eigen-CAM.
 
-Para reproducir los experimentos del proyecto, se recomienda utilizar los notebooks disponibles en `code/exp-*/ViT_calidad_papas.ipynb`.
+> Para reproducir los experimentos del proyecto, se recomienda utilizar los notebooks disponibles en: [Notebooks de experimentos](../code/).
 
 ## Modelos entrenados relacionados
 

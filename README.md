@@ -224,8 +224,8 @@ Si utiliza este repositorio, el conjunto de datos o los modelos entrenados, cite
 ```
 
 ## Licencia
-
-El contenido de este repositorio se distribuye bajo la licencia **Creative Commons Attribution 4.0 International (CC BY 4.0)**, según lo indicado en el manuscrito.
+© 2026 Cristian.  
+El contenido de este repositorio se distribuye bajo la licencia [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 Se permite el uso, distribución y reproducción del material en cualquier medio, siempre que se cite adecuadamente el trabajo original y se respeten las licencias de las fuentes públicas integradas.
 

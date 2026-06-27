@@ -8,7 +8,7 @@ Los datos no se almacenan directamente en este repositorio debido a su tamaño. 
 
 El conjunto de datos híbrido está disponible en Zenodo:
 
-- **Zenodo:** [Dataset de tubérculos de papas](https://doi.org/10.5281/zenodo.20616991)
+- **Zenodo:** [Hybrid Potato Tuber Dataset](https://doi.org/10.5281/zenodo.20616991)
 - **DOI:** `10.5281/zenodo.20616991`
 
 Este conjunto integra imágenes de tubérculos de papa obtenidas desde dos tipos de fuentes:

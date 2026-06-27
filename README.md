@@ -2,75 +2,138 @@
 
 **Vision Transformer-Based Postharvest Grading of Chaucha and Chola Potato Varieties**
 
-_Universidad Nacional de Loja (UNL) — Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación._
+_Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación._
 
 ## Descripción
 
-Esta investigación experimental desarrolla un modelo de clasificación automática de tubérculos de papa de las variedades **chaucha** (_Solanum phureja_) y **chola** (_Solanum tuberosum_) en la fase de poscosecha, en las categorías **"buen estado"** y **"defectuoso"**.
+Este repositorio contiene el manuscrito, los notebooks, las figuras y la documentación asociada a la investigación experimental sobre clasificación automática de tubérculos de papa en etapa de poscosecha.
 
-El modelo se basa en la arquitectura **Vision Transformer (ViT-Base/16)**, preentrenada en ImageNet-21k y ajustada sobre ImageNet-1K, y fue adaptada mediante dos fases de ajuste siguiendo la metodología **CRISP-ML(Q)**:
+El estudio se centra en las variedades **chaucha** (_Solanum phureja_) y **chola** (_Solanum tuberosum_), clasificadas en dos categorías:
 
-1. **Transfer Learning (TL):** congelamiento de las capas iniciales (extractoras de características) y reentrenamiento de la cabeza de clasificación.
-2. **Fine-Tuning parcial (FTP):** congelamiento de las 6 primeras capas del encoder y reentrenamiento de las capas restantes junto con la cabeza de clasificación.
+- **Buen estado:** tubérculos sin defectos visibles relevantes.
+- **Defectuoso:** tubérculos con cortes, brotes y signos de pudrición.
 
-Adicionalmente, se incorporaron técnicas de _data augmentation_ (rotaciones, escalado, variaciones de brillo) y _random erasing_ para mejorar la generalización, y se evaluó la interpretabilidad del modelo mediante **Eigen-CAM** (`pytorch-grad-cam`).
+El modelo propuesto se basa en **Vision Transformer (ViT-Base/16)**, preentrenado en ImageNet-21k y ajustado sobre ImageNet-1K. La adaptación al dominio de tubérculos de papa se realizó mediante dos estrategias:
 
-El objetivo es reducir la subjetividad y el error humano en la clasificación poscosecha de variedades andinas, donde las arquitecturas CNN presentan limitaciones por su sesgo inductivo local.
+1. **Transfer Learning (TL):** congelamiento de las capas extractoras de características y reentrenamiento de la cabeza de clasificación.
+2. **Fine-Tuning parcial (FTP):** congelamiento de las seis primeras capas del encoder y reentrenamiento de las últimas seis capas restantes junto con la cabeza de clasificación.
 
----
+Además, se emplearon técnicas de aumento de datos, normalización basada en ImageNet y análisis de interpretabilidad mediante **Eigen-CAM** con `pytorch-grad-cam`.
+
+## Objetivo
+
+El objetivo del proyecto es reducir la subjetividad y el error humano en la clasificación poscosecha de variedades andinas de papa, mediante un modelo de aprendizaje profundo basado en los Transformadores de Visión (ViT), capaz de identificar tubérculos en buen estado y tubérculos defectuosos.
 
 ## Resultados principales
 
-Evaluación sobre el subconjunto de prueba (_n_ = 7 200 imágenes):
+La evaluación final se realizó sobre un subconjunto de prueba de **7 200 imágenes**, balanceado en dos clases.
 
-| Técnica             | Accuracy | MCC    | Loss   |
-| ------------------- | -------- | ------ | ------ |
-| Transfer Learning   | 0.9604   | 0.9209 | 0.1346 |
-| Fine-Tuning parcial | 0.9999   | 0.9997 | 0.0007 |
+| Técnica                   | Accuracy |    MCC |   Loss |
+| ------------------------- | -------: | -----: | -----: |
+| Transfer Learning (TL)    |   0.9600 | 0.9202 | 0.1353 |
+| Fine-Tuning parcial (FTP) |   0.9999 | 0.9997 | 0.0015 |
 
-**Matrices de confusión (n = 3 600 por clase):**
+**Resumen de matrices de confusión:**
 
-- _Transfer Learning:_ 3 427/3 600 "buen estado" correctas, 3 488/3 600 "defectuoso" correctas (173 FP, 112 FN).
-- _Fine-Tuning parcial:_ clasificación correcta en la totalidad de las muestras, con un único falso negativo.
+- **Transfer Learning:** 3 420 de 3 600 imágenes de la clase buen estado fueron clasificadas correctamente; 3 492 de 3 600 imágenes defectuosas fueron clasificadas correctamente.
+- **Fine-Tuning parcial:** el modelo clasificó correctamente casi todas las muestras del conjunto de prueba, con un único falso negativo.
 
-El análisis Eigen-CAM confirmó que las regiones de mayor activación coinciden con las áreas de defecto real (pudrición, cortes, brotes), diferenciándolas del fondo.
-
----
+El análisis con Eigen-CAM mostró que las regiones de mayor activación del modelo coinciden con zonas visualmente relevantes, como cortes, brotes y áreas de pudrición, en lugar de enfocarse principalmente en el fondo de la imagen.
 
 ## Estructura del repositorio
 
-```
+```text
 TIC-2026/
-├── manuscript/     # Documento pdf del manuscrito.
-├── code/           # Notebooks de preprocesamiento y entrenamiento.
-├── figures/        # Figuras del manuscrito (metodología, dataset, arquitectura, métricas, Eigen-CAM).
-└── data/           # Referencias al dataset híbrido y modelos entrenados.
+├── README.md
+├── manuscript/
+│   └── manuscript.pdf
+├── code/
+│   ├── prepro/
+│   │   └── preprocesamiento.ipynb
+│   └── exp-*/
+│       └── ViT_calidad_papas.ipynb
+├── figures/
+│   ├── README.md
+│   ├── comparative_test_tl_ftp.png
+│   ├── confusion_matrices_tl_ftp.png
+│   ├── test_metrics_chart_tl_ftp.png
+│   ├── results_tl/
+│   └── results_ftp/
+└── data/
+    └── README.md
 ```
 
----
+## Contenido del repositorio
 
-## 1. `manuscript/`
+### `manuscript/`
 
-Manuscrito en pdf siguiendo el formato de la revista International Journal of Experimental Botany.
+Contiene el manuscrito en formato PDF. El documento describe la motivación, metodología, experimentos, resultados y conclusiones del estudio.
 
----
+### `code/`
 
-## 2. `code/`
+Contiene los notebooks utilizados para el preprocesamiento, entrenamiento, evaluación e interpretabilidad del modelo.
 
-### Requisitos
+| Ruta                                 | Descripción                                                                          |
+| ------------------------------------ | ------------------------------------------------------------------------------------ |
+| `code/prepro/preprocesamiento.ipynb` | Curación, organización y preprocesamiento del conjunto de datos.                     |
+| `code/exp-*/ViT_calidad_papas.ipynb` | Notebooks de entrenamiento y evaluación para distintos experimentos con ViT-Base/16. |
 
-El modelo se entrenó en **Google Colab** con **PyTorch 2.10** sobre una GPU **NVIDIA Tesla T4**.
+Los notebooks incluyen el cálculo de métricas como accuracy, precision, recall, F1-score, MCC, pérdida y matrices de confusión. También generan visualizaciones de interpretabilidad mediante Eigen-CAM.
 
-```bash
-python -m venv venv
-source venv/bin/activate   # En Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
+### `figures/`
 
-Dependencias principales utilizadas en el proyecto:
+Contiene las figuras del manuscrito y los resultados visuales de los experimentos. Incluye:
 
-```
-torch==2.10
+- Figuras comparativas entre TL y FTP.
+- Curvas de accuracy, precision, recall, F1-score, MCC y loss.
+- Resultados finales sobre el subconjunto de prueba.
+- Mapas de calor Eigen-CAM por variedad, clase y técnica de ajuste.
+
+La descripción detallada de cada archivo se encuentra en [figures/README.md](figures/README.md).
+
+### `data/`
+
+Contiene la documentación del conjunto de datos utilizado en el proyecto. Los datos no se almacenan directamente en este repositorio; están disponibles en Zenodo y Hugging Face.
+
+La descripción completa del conjunto de datos, sus particiones, fuentes públicas y enlaces de descarga se encuentra en [data/README.md](data/README.md).
+
+## Conjunto de datos
+
+El conjunto de datos híbrido contiene **36 000 imágenes** balanceadas:
+
+| Clase       | Número de imágenes |
+| ----------- | -----------------: |
+| Buen estado |             18 000 |
+| Defectuoso  |             18 000 |
+
+Las imágenes provienen de fotografías locales y repositorios públicos. La partición utilizada fue:
+
+| Subconjunto   | Porcentaje | Número de imágenes |
+| ------------- | ---------: | -----------------: |
+| Entrenamiento |       64 % |             23 040 |
+| Validación    |       16 % |              5 760 |
+| Prueba        |       20 % |              7 200 |
+
+Recursos principales:
+
+- **Dataset en Zenodo:** [Hybrid Potato Tuber Dataset](https://doi.org/10.5281/zenodo.20616991)
+- **Datasets en Hugging Face:** [Potato Tuber Datasets](https://huggingface.co/datasets/Carlos012/dataset_papas)
+
+## Modelos entrenados
+
+Los modelos resultantes de las estrategias **Transfer Learning (TL)** y **Fine-Tuning parcial (FTP)** están disponibles en:
+
+- **Zenodo:** [TL and PFT Models](https://doi.org/10.5281/zenodo.20649945).
+- **Hugging Face:** [Fine‑Tuned Models](https://huggingface.co/Carlos012/vit_papas).
+
+## Requisitos
+
+El entrenamiento original se realizó en **Google Colab**, con **PyTorch 2.10** y una GPU **NVIDIA Tesla T4**.
+
+Dependencias principales:
+
+```text
+torch
 torchvision
 timm
 scikit-learn
@@ -82,91 +145,57 @@ huggingface_hub
 datasets
 ```
 
-### a) Preprocesamiento — `code/preprocesamiento.ipynb`
-
-Notebook de curación y organización del dataset híbrido: etiquetado, organización en directorios por clase con nomenclatura estandarizada, descarte de muestras duplicadas/desenfocadas/con iluminación extrema, redimensionamiento a 224×224 px y normalización con media (0.485, 0.456, 0.406) y desviación estándar (0.229, 0.224, 0.225) de ImageNet.
+Para ejecutar los notebooks en un entorno local:
 
 ```bash
-jupyter notebook code/preprocesamiento.ipynb
+python -m venv venv
+source venv/bin/activate
+pip install torch torchvision timm scikit-learn pandas numpy matplotlib pytorch-grad-cam huggingface_hub datasets
+jupyter notebook
 ```
 
-### b) Entrenamiento y evaluación — `code/ViT_calidad_papas.ipynb`
-
-Notebook principal. Implementa el modelo `ClasificadorPapasViT` sobre ViT-Base/16 con las fases TL y FTP descritas arriba, evaluación de métricas (Accuracy, Precision, Recall, F1-Score, MCC, matriz de confusión) e interpretabilidad mediante Eigen-CAM.
-
-**Hiperparámetros utilizados:**
-
-| Parámetro       | Transfer Learning      | Fine-Tuning parcial    |
-| --------------- | ---------------------- | ---------------------- |
-| Learning rate   | 1×10⁻⁵                 | 1×10⁻⁶                 |
-| Weight decay    | 1×10⁻²                 | 1×10⁻⁴                 |
-| Batch size      | 32                     | 32                     |
-| Épocas          | 30                     | 20                     |
-| Optimizador     | AdamW (β = 0.9, 0.999) | AdamW (β = 0.9, 0.999) |
-| Warmup fraction | 0.5                    | 0.5                    |
-| Precisión       | Mixed precision        | Mixed precision        |
-
-**Ejecución:**
+En Windows, la activación del entorno virtual puede realizarse con:
 
 ```bash
-jupyter notebook code/ViT_calidad_papas.ipynb
+venv\Scripts\activate
 ```
 
-O en Google Colab (entorno usado originalmente):
+## Reproducción de los experimentos
 
-- Subir el notebook a Colab.
-- Configurar `NUM_WORKERS = 0` (requerido en Colab).
-- Cargar el dataset desde HuggingFace Hub (ver sección `data/`).
+Flujo recomendado:
 
-**Salidas generadas:**
+1. Descargar el conjunto de datos desde Zenodo o Hugging Face.
+2. Ejecutar `code/prepro/preprocesamiento.ipynb` para revisar y preparar las imágenes.
+3. Ejecutar el notebook experimental correspondiente en `code/exp-*/ViT_calidad_papas.ipynb`.
+4. Evaluar el modelo sobre los subconjuntos de validación y prueba.
+5. Generar las métricas, matrices de confusión, curvas de entrenamiento y mapas Eigen-CAM.
+6. Guardar las figuras resultantes en `figures/results_tl/`, `figures/results_ftp/` o en la raíz de `figures/`, según corresponda.
 
-- Historial de entrenamiento (CSV) con métricas por época.
-- Curvas de pérdida (train/val/test) por fase.
-- Matrices de confusión y métricas (Accuracy, Precision, Recall, F1-Score, MCC) sobre el subconjunto de prueba.
-- Mapas de calor Eigen-CAM superpuestos sobre imágenes de prueba.
+En Google Colab se recomienda configurar `NUM_WORKERS = 0` para evitar problemas de carga paralela de datos.
 
----
+## Figuras y resultados visuales
 
-## 3. `figures/`
+Las figuras principales disponibles en este repositorio incluyen:
 
-Figuras del manuscrito, generadas por los notebooks o disponibles en repositorios externos:
+| Archivo o carpeta                       | Descripción                                          |
+| --------------------------------------- | ---------------------------------------------------- |
+| `figures/comparative_test_tl_ftp.png`   | Comparación global entre TL y FTP.                   |
+| `figures/confusion_matrices_tl_ftp.png` | Matrices de confusión comparativas.                  |
+| `figures/test_metrics_chart_tl_ftp.png` | Métricas finales de prueba para ambas técnicas.      |
+| `figures/results_tl/`                   | Curvas, métricas y Eigen-CAM de Transfer Learning.   |
+| `figures/results_ftp/`                  | Curvas, métricas y Eigen-CAM de Fine-Tuning parcial. |
 
-| Figura | Descripción                                                                   | Fuente                                                   |
-| ------ | ----------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Fig. 1 | Flujo metodológico CRISP-ML(Q)                                                | [Figshare](https://doi.org/10.6084/m9.figshare.32395359) |
-| Fig. 2 | Muestras representativas del dataset (chaucha/chola × buen estado/defectuoso) | generada localmente                                      |
-| Fig. 3 | Arquitectura ViT adaptada a clasificación binaria                             | generada localmente                                      |
-| Fig. 4 | Curvas de pérdida (TL y FTP)                                                  | generada por `ViT_calidad_papas.ipynb`                   |
-| Fig. 5 | Matrices de confusión (TL y FTP)                                              | generada por `ViT_calidad_papas.ipynb`                   |
-| Fig. 6 | Mapas de calor Eigen-CAM                                                      | [Figshare](https://doi.org/10.6084/m9.figshare.32643123) |
+## Fuentes públicas integradas
 
----
+El conjunto de datos híbrido incorpora imágenes de los siguientes recursos:
 
-## 4. `data/`
-
-### Dataset híbrido
-
-- **Tamaño total:** 36 000 imágenes balanceadas (18 000 "buen estado" / 18 000 "defectuoso"), de las cuales 32 292 son muestras locales y 3 708 provienen de repositorios públicos.
-- **Particiones:** 23 040 entrenamiento (64%) / 5 760 validación (16%) / 7 200 prueba (20%).
-- **Repositorio del dataset híbrido (Zenodo):** [10.5281/zenodo.20616991](https://doi.org/10.5281/zenodo.20616991)
-- **Repositorio de los datasets utilizados (Hugging Face Hub):** [Dataset de tubérculos de papas](https://huggingface.co/datasets/Carlos012/dataset_papas)
-
-### Fuentes públicas integradas en el dataset híbrido
-
-- Mafi MMHM et al. _Potato Disease Recognition Dataset_. Mendeley Data, 2023. doi:10.17632/pmbc875pr7.1
-- Mridha MH, Mridha NS. _Healthy Potato Image Dataset_. Mendeley Data, 2023. doi:10.17632/5m38z6jthb.1
-- Islam S, Afrin T. _PotatoCare: Deep learning based potato disease dataset_. Mendeley Data, 2025. doi:10.17632/7vm7xskfg4.2
-
-### Modelos entrenados
-
-Modelos resultantes de las fases de TL y FTP, empaquetados (`.pt`):
-
-- **DOI (Zenodo):** [10.5281/zenodo.20649945](https://doi.org/10.5281/zenodo.20649945)
-- **Hugging Face Hub:** [Modelos ViT ajustados](https://huggingface.co/Carlos012/vit_papas)
-
----
+- Mafi, M. M. H. M. et al. _Potato Disease Recognition Dataset_. Mendeley Data, 2023. DOI: `10.17632/pmbc875pr7.1`.
+- Mridha, M. H.; Mridha, N. S. _Healthy Potato Image Dataset_. Mendeley Data, 2023. DOI: `10.17632/5m38z6jthb.1`.
+- Islam, S.; Afrin, T. _PotatoCare: Deep learning based potato disease dataset_. Mendeley Data, 2025. DOI: `10.17632/7vm7xskfg4.2`.
 
 ## Citación
+
+Si utiliza este repositorio, el conjunto de datos o los modelos entrenados, cite el manuscrito del proyecto y el recurso correspondiente en Zenodo.
 
 ```bibtex
 @article{ticpapas2026,
@@ -174,35 +203,33 @@ Modelos resultantes de las fases de TL y FTP, empaquetados (`.pt`):
   author  = {Armijos-Sarango, Cristian and Chamba-Eras, Luis},
   year    = {2026},
   month   = {6},
-  doi     = {10.32604/journal.2026.000000},
+  doi     = {},
   note    = {Version June 11, 2026 submitted to Journal Not Specified}
 }
 ```
 
----
+```bibtex
+@dataset{dataset_papas_2026,
+  title     = {Dataset de tubérculos de papas},
+  author    = {Armijos-Sarango, Cristian and Chamba-Eras, Luis},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20616991}
+}
+```
 
 ## Licencia
 
-Todo el contenido de este repositorio (manuscrito, código, figuras y datos) se distribuye bajo licencia **Creative Commons Attribution 4.0 International (CC BY 4.0)**, según se indica en el manuscrito ("© 2026 by the Authors. [CC BY 4.0] Creative Commons Attribution 4.0 International License").
+El contenido de este repositorio se distribuye bajo la licencia **Creative Commons Attribution 4.0 International (CC BY 4.0)**, según lo indicado en el manuscrito.
 
-Esto significa que se permite el uso, distribución y reproducción en cualquier medio, siempre que se cite apropiadamente el trabajo original.
-
----
-
-## Disponibilidad de datos
-
-Parte de los datos públicos utilizados están disponibles en los repositorios Mendeley listados arriba (_Potato Disease Recognition Dataset_, _Healthy Potato Image Dataset_, _PotatoCare: Deep learning based potato disease dataset_). El resto de los datos generados durante el estudio están disponibles a solicitud razonable al autor de correspondencia.
-
----
+Se permite el uso, distribución y reproducción del material en cualquier medio, siempre que se cite adecuadamente el trabajo original y se respeten las licencias de las fuentes públicas integradas.
 
 ## Declaración sobre uso de IA generativa
 
-Los autores declaran haber utilizado herramientas de IA generativa (ChatGPT, Gemini, Copilot, NotebookLM y Claude) como apoyo en la redacción, organización y formateo del manuscrito, así como en la extracción/análisis de información y validación bibliográfica. La interpretación de resultados y las conclusiones son responsabilidad exclusiva de los autores.
-
----
+Los autores declaran haber utilizado herramientas de IA generativa como apoyo en la redacción, organización, formateo, extracción de información y validación bibliográfica. La interpretación de resultados, la metodología experimental y las conclusiones son responsabilidad exclusiva de los autores.
 
 ## Contacto
 
-Autor: `Armijos-Sarango, Cristian` -- Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación. `cristian.e.armijos@unl.edu.ec`
+**Autor:** Armijos-Sarango, Cristian. Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación. `cristian.e.armijos@unl.edu.ec`
 
-Coautor: `Chamba-Eras, Luis` -- Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación. `lachamba@unl.edu.ec`.
+**Coautor:** Chamba-Eras, Luis. Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y los Recursos Naturales No Renovables, Carrera de Computación. `lachamba@unl.edu.ec`

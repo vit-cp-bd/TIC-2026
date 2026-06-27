@@ -95,7 +95,7 @@ Antes del entrenamiento, las imágenes fueron curadas y preprocesadas para mante
 6. Aplicación de técnicas de aumento de datos durante el entrenamiento.
 
 > El notebook asociado al preprocesamiento se encuentra en:
-> [Preprocesamiento del dataset](code/prepro/preprocesamiento.ipynb)
+> [Preprocesamiento del dataset](../code/prepro/preprocesamiento.ipynb)
 
 
 ## Uso recomendado

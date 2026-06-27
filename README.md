@@ -201,20 +201,25 @@ Si utiliza este repositorio, el conjunto de datos o los modelos entrenados, cite
 @article{ticpapas2026,
   title   = {Vision Transformer-Based Postharvest Grading of Chaucha and Chola Potato Varieties},
   author  = {Armijos-Sarango, Cristian and Chamba-Eras, Luis},
-  year    = {2026},
-  month   = {6},
+  year    = 2026,
+  month   = jun,
   doi     = {},
   note    = {Version June 11, 2026 submitted to Journal Not Specified}
 }
 ```
 
 ```bibtex
-@dataset{dataset_papas_2026,
-  title     = {Dataset de tubérculos de papas},
-  author    = {Armijos-Sarango, Cristian and Chamba-Eras, Luis},
-  year      = {2026},
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.20616991}
+@dataset{armijos_sarango_2026_20616991,
+  author       = {Armijos-Sarango, Cristian},
+  title        = {Hybrid Potato Tuber Dataset (Solanum tuberosum,
+                   Solanum phureja)
+                  },
+  month        = jun,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = 1,
+  doi          = {10.5281/zenodo.20616991},
+  url          = {https://doi.org/10.5281/zenodo.20616991},
 }
 ```
 

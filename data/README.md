@@ -79,7 +79,7 @@ Estas fuentes fueron integradas con fotografías locales para aumentar la divers
 
 Los conjuntos de datos completos y versionados también están disponibles en Hugging Face:
 
-- **Datasets del proyecto:** [Datasets de tubérculos de pap](https://huggingface.co/datasets/Carlos012/dataset_papas)
+- **Datasets del proyecto:** [Potato Tuber Datasets](https://huggingface.co/datasets/Carlos012/dataset_papas)
 
 Se recomienda usar las versiones publicadas en Hugging Face cuando se necesite integrar el conjunto de datos directamente en flujos de trabajo con `datasets`, PyTorch o notebooks de Google Colab.
 

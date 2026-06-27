@@ -24,8 +24,8 @@ Las imágenes se organizan en dos clases principales:
 
 | Clase | Descripción |
 | --- | --- |
-| `buen_estado` | Tubérculos sin defectos visibles relevantes para la clasificación poscosecha. |
-| `defectuoso` | Tubérculos con cortes, brotes o signos de pudrición visibles. |
+| `Buen estado` | Tubérculos sin defectos visibles relevantes para la clasificación poscosecha. |
+| `Defectuoso` | Tubérculos con cortes, brotes o signos de pudrición visibles. |
 
 ## Variedades consideradas
 

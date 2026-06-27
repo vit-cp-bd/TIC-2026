@@ -94,10 +94,9 @@ Antes del entrenamiento, las imágenes fueron curadas y preprocesadas para mante
 5. Normalización con la media y desviación estándar de ImageNet.
 6. Aplicación de técnicas de aumento de datos durante el entrenamiento.
 
-El notebook asociado al preprocesamiento se encuentra en:
+> El notebook asociado al preprocesamiento se encuentra en:
+> [Preprocesamiento del dataset](code/prepro/preprocesamiento.ipynb)
 
-!Note
-[code/prepro/preprocesamiento.ipynb](code/prepro/preprocesamiento.ipynb)
 
 ## Uso recomendado
 

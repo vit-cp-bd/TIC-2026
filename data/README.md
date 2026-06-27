@@ -97,7 +97,7 @@ Antes del entrenamiento, las imágenes fueron curadas y preprocesadas para mante
 El notebook asociado al preprocesamiento se encuentra en:
 
 ```text
-code/prepro/preprocesamiento.ipynb
+[code/prepro/preprocesamiento.ipynb](code/prepro/preprocesamiento.ipynb)
 ```
 
 ## Uso recomendado

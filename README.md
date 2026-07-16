@@ -7,7 +7,7 @@ _Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y l
 [![PyTorch](https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white&style=for-the-badge)](https://pytorch.org/) 
 [![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge)](https://www.python.org/) 
 [![timm](https://img.shields.io/badge/timm-000000?logo=github&logoColor=white&style=for-the-badge)](https://github.com/rwightman/pytorch-image-models) 
-[![Hugging Face](https://img.shields.io/badge/HuggingFace-ffcc00?logo=huggingface&logoColor=black&style=for-the-badge)](https://huggingface.co/) 
+[![Hugging Face](https://img.shields.io/badge/HuggingFace-ffcc00?logo=huggingface&logoColor=white&style=for-the-badge)](https://huggingface.co/) 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=for-the-badge)](https://github.com/) 
 [![Zenodo](https://img.shields.io/badge/Zenodo-0000FF?logo=zenodo&logoColor=white&style=for-the-badge)](https://zenodo.org/) 
 [![ORCID](https://img.shields.io/badge/ORCID-A6CE39?logo=orcid&logoColor=white&style=for-the-badge)](https://orcid.org/) 

@@ -15,7 +15,7 @@ _Universidad Nacional de Loja (UNL), Facultad de la Energía, las Industrias y l
 
 ## Descripción
 
-Este repositorio contiene el manuscrito, los notebooks, las figuras y la documentación asociada a la investigación experimental sobre clasificación automática de tubérculos de papa en etapa de poscosecha.
+Este repositorio contiene el manuscrito, los notebooks, las figuras y la documentación relacionada con la investigación experimental sobre clasificación automática de tubérculos de papa en etapa de poscosecha.
 
 El estudio se centra en las variedades **chaucha** (_Solanum phureja_) y **chola** (_Solanum tuberosum_), clasificadas en dos categorías:
 

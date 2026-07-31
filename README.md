@@ -233,8 +233,8 @@ Si utiliza este repositorio, el conjunto de datos o los modelos entrenados, cite
 ```
 
 ## Licencia
-© 2026 Cristian Armijos
-El contenido de este repositorio se distribuye bajo la licencia [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+
+© 2026 El contenido de este repositorio se distribuye bajo la licencia [MIT](LICENSE).
 
 Se permite el uso, distribución y reproducción del material en cualquier medio, siempre que se cite adecuadamente el trabajo original y se respeten las licencias de las fuentes públicas integradas.
 

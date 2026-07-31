@@ -234,9 +234,9 @@ Si utiliza este repositorio, el conjunto de datos o los modelos entrenados, cite
 
 ## Licencia
 
-© 2026 El contenido de este repositorio se distribuye bajo la licencia [MIT](LICENSE).
+El código de este repositorio se distribuye bajo la licencia [MIT](LICENSE).
 
-Se permite el uso, distribución y reproducción del material en cualquier medio, siempre que se cite adecuadamente el trabajo original y se respeten las licencias de las fuentes públicas integradas.
+Este proyecto utiliza datasets y modelos externos que mantienen sus propias licencias de atribución (CC BY 4.0). Ver [créditos y fuentes](#) para detalles.
 
 ## Declaración sobre uso de IA generativa
 

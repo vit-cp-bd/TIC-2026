@@ -236,7 +236,7 @@ Si utiliza este repositorio, el conjunto de datos o los modelos entrenados, cite
 
 El código de este repositorio se distribuye bajo la licencia [MIT](LICENSE).
 
-Este proyecto utiliza datasets y modelos externos que mantienen sus propias licencias de atribución (CC BY 4.0). Ver [créditos y fuentes](#) para detalles.
+Este proyecto utiliza datasets y modelos externos que mantienen sus propias licencias de atribución (CC BY 4.0).
 
 ## Declaración sobre uso de IA generativa
 
